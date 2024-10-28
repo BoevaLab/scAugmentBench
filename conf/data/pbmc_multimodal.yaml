@@ -1,0 +1,5 @@
+defaults:
+  - data.yaml
+
+data_path: "actual_data/PBMC_multimodal"
+dname: "PBMC-Multiome"
