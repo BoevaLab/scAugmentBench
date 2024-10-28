@@ -1,4 +1,4 @@
-# Benchmarking Self-Supervised Learning\\for Single-Cell Data
+# Benchmarking Self-Supervised Learning for Single-Cell Data
 
 This repository implements a benchmark of augmentations for single-cell RNA-seq data with contrastive learning.
 
