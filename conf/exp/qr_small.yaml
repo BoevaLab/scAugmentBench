@@ -1,0 +1,17 @@
+# @package _global_
+hydra:
+  sweeper:
+    params:
+      random_seed: range(20, 25)
+      model.hidden_dim: 64
+      model.training.max_epochs: 10
+      +model: barlowtwins, byol, moco, nnclr, simclr, simsiam, vicreg
+      +data: pancreas
+      data.holdout_batch: choice('Mutaro_b2', 'Segerstolpe_b3', 'Wang_b4', 'Xin_b5')
+      +augmentation: clear_pipeline, our_pipeline
+      logging.project: architecture-ablation_vol1
+  job:
+    name: ${random_seed}
+  sweep:
+    dir: ablation-db-5/qr-mapper-small/
+    subdir: ${data.dname}/${data.holdout_batch}/${model.model}/${random_seed}
