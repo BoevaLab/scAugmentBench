@@ -1,3 +1,4 @@
+# to check if two (!!!) augmentations fair better than all
 # @package _global_
 hydra:
   sweeper:
@@ -5,7 +6,7 @@ hydra:
       random_seed: range(20, 25)
       model.hidden_dim: 64
       model.training.max_epochs: 200
-      +model: barlowtwins, byol, moco, nnclr, simclr, simsiam, vicreg
+      +model: vicreg
       +data: immune_atlas
       data.holdout_batch: ["10x 5' v2"]
       +augmentation: clear_pipeline
@@ -13,5 +14,5 @@ hydra:
   job:
     name: ${random_seed}
   sweep:
-    dir: ablation-db-2/qr-mapper/
-    subdir: ${data.dname}/${model.model}/${random_seed}
+    dir: ablation-db-5/qr-mapper/
+    subdir: ${data.dname}/${data.holdout_batch}/${model.model}/${random_seed}
