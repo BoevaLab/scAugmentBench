@@ -1,0 +1,16 @@
+# @package _global_
+hydra:
+  sweeper:
+    params:
+      random_seed: range(20, 25)
+      model.hidden_dim: 64
+      model.training.max_epochs: 200
+      +model: barlowtwins, byol, moco, nnclr, simclr, simsiam, vicreg
+      +data: mouse, pancreas, pbmc, neocortex, lung, immune
+      +augmentation: clear_pipeline
+      logging.project: architecture-ablation_vol1
+  job:
+    name: ${random_seed}
+  sweep:
+    dir: ablation-db-3/benchmark-original/
+    subdir: ${data.dname}/${model.model}/${random_seed}
